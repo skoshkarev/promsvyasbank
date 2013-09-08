@@ -196,19 +196,6 @@ Class Psb
         return $form;
     }
 
-    public function send_request($post_fields = array())
-    {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $this -> gateway_url);
-        curl_setopt($ch, CURLOPT_POST, count($post_fields));
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);
-        $result = curl_exec($ch);
-        $request_info = curl_getinfo($ch);
-        curl_close($ch);
-
-        return $request_info['http_code'] == 200 ? true : false;
-    }
-
     /**
      * Покупка
      *
